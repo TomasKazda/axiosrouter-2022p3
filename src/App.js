@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route} from "react-router-dom";
+import About from "./components/About";
+import Home from "./components/Home";
+import P404 from "./components/404";
+import DateList from "./components/Data"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <div className='App'>
+      <h1>Master &mdash; detail example</h1>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} >
+            <Route index element={<About who="Pepa" />} />
+            <Route path="/about" element={<About who="Jarda" />} />
+            <Route path="/date/:d?" element=<DateList/> />
+          </Route>
+          <Route path="*" element={<P404 />} />
+        </Routes>
+      </div>
+  </div>
 }
 
 export default App;
